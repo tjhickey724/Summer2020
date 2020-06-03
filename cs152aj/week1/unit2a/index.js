@@ -11,6 +11,10 @@ const
   express = require("express"),
   app = express();
 
+/*
+  The next two calls to app.use tell the app router
+  to parse the url data and the form data into json
+*/
 app.use(
   express.urlencoded({
     extended: false
@@ -19,12 +23,24 @@ app.use(
                               1
 app.use(express.json());
 
+
+app.use((req, res, next) => {
+  console.log(`\n\n\n--------\nrequest made to: ${req.url}`);
+  console.log(`req.method=${JSON.stringify(req.method,null,2)}`)
+  console.log(`req.body=${JSON.stringify(req.body,null,2)}`)
+  console.log(`req.query=${JSON.stringify(req.query,null,2)}`)
+  next();
+});
+
+function showParams(req){
+  console.log(`req.params=${JSON.stringify(req.params,null,2)}`)
+}
+
 app.get("/", (req, res) => {
   res.send("Hello, Universe!");
 })
 
 app.get("/bio", (req, res) => {
-  printReqInfo(req)
   res.send(`Enter your data below:<br>
   <form method="post" action="/bio">
     name: <input type="text" name="name"><br>
@@ -35,18 +51,11 @@ app.get("/bio", (req, res) => {
 })
 
 app.post("/bio", (req, res) => {
-  printReqInfo(req)
-  res.send(`Update your data below:<br>
-  <form method="post" action="/bio">
-    name: <input type="text" name="name"><br>
-    age: <input type="number" name="age"><br>
-    <input type="submit">
-  </form>
-    `);
+  res.send(`Thanks for submitting your info!`)
 })
 
 app.get("/bio/:name/:age", (req, res) => {
-  printReqInfo(req)
+  showParams(req)
   res.send("None of your business");
 })
 
@@ -60,12 +69,3 @@ app.listen(port, () => {
   console.log(`The Express.js server has started and is listening
   on port number: ${port}`);
 });
-
-function printReqInfo(req){
-  console.log(`params: ${JSON.stringify(req.params,null,2)}`)
-  console.log(`body: ${JSON.stringify(req.body,null,2)}`)
-  console.log(`url: ${JSON.stringify(req.url,null,2)}`)
-  console.log(`query: ${JSON.stringify(req.query,null,2)}`)
-  console.log("someone is viewing the bio at time "+new Date())
-
-}
