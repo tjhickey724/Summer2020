@@ -1,4 +1,4 @@
-const data =
+export default
 [
   {
    "id": 1,
@@ -61,5 +61,3 @@ const data =
     "ranking": 5
   }
 ]
-
-export default data;
