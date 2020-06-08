@@ -25,6 +25,8 @@ app.get("/", (req, res) => {
 
 app.get("/courses", homeController.showCourses);
 app.post("/courses", homeController.showSelectedCourses);
+app.get("/courses/:email", homeController.showSelectedCourses);
+
 app.get("/contact", homeController.showSignUp);
 app.post("/contact", homeController.postedSignUpForm);
 

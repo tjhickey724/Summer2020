@@ -1,28 +1,88 @@
 <div class="container">
-  <form method="post" action="courses">
-    instructor's email <input type="text" name="email">
-    <input type="submit">
-  </form>
-  <hr>
-  <div class="col-sm-6">
-    <img src="<%= image_url %>" alt="">
-  </div>
-  <div class="col-sm-6">
-    <h1 class="title">Courses recently taught by <%= instructor %> </h1>
-    <% courses.forEach(course => { %>
-    <h5>
-      <%= course.subject %>
-      <%= course.coursenum %>
-      Section <%= course.section %>
-      in term <%= course.term %>
-      Enrolled: <%= course.enrolled %><br>
-      <%= course.name %><br>
-      <%= course.instructor[0] %>
-      <%= course.instructor[1] %>
-      <%= course.instructor[2] %>
-    </h5>
+  <div class="row">
+    <div class="col-sm-6">
+        <form method="post" action="/courses">
+          <table class="table table-bordered">
+            <tbody>
+              <tr><td>instructor email: </td>
+                  <td> <input type="text" name="email"></td>
+              </tr>
+              <tr>
+                <td> Semester</td>
+                <td>
+                  <select name="term">
+                    <option value="">Any Semester</option>
+                    <option value="1193">Fall 2019</option>
+                    <option value="1201">Spring 2020</option>
+                    <option value="1202">Summer 2020</option>
+                    <option value="1203">Fall 2020</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Department
+                  </td>
+                  <td>
+                    <input type="text" name="department" placeholder="e.g. COSI">
+                  </td>
+                </tr>
+              </tbody>
+          </table>
+          <input type="submit">
+        </form>
+      </div>
+      <div class="col-sm-3">
+        <img src="<%= image_url %>" alt="">
+      </div>
+    </div>
 
-    <% }); %>
+  <hr>
+  <hr>
+  <div class="row">
+
+      <div class="col-sm-6">
+        <h3 class="title">
+          Instructor: <%= instructor || 'anyone'%>
+          <br>Term: <%= term  || "Fall19-Fall20" %>
+          <br> Department: <%= department || "any" %>
+        </h3>
+        <ol>
+        <% courses.forEach(course => { %>
+        <li style="border: thick solid blue; margin-top:20px; padding:5px">
+          <%= course.subject %>
+          <%= course.coursenum %>
+          Section <%= course.section %>
+          in term <%= course.term %>
+          Enrolled: <%= course.enrolled %><br>
+          <%= course.name %><br>
+          <%= course.instructor[0] %>
+          <%= course.instructor[1] %>
+          <%= course.instructor[2] %>
+          <br>
+          <img src ="<%= course.faculty.image_url %>" alt="fac photo">
+
+        </li>
+
+        <% }); %>
+        </ol>
+        </div>
+        <div class="col-sm-6">
+          <h1> List of all Brandeis Faculty</h1>
+          <ol>
+            <% faculty.forEach(fac => { %>
+              <li>
+                <a href="/courses/<%= fac.email %>">
+                <%= fac.firstname %>
+                <%= fac.lastname %>
+                </a>
+              </li>
+
+            <% }); %>
+          </ol>
+
+        </div>
+     </div>
   </div>
 
 </div>
