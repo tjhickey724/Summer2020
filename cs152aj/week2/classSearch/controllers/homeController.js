@@ -5,6 +5,7 @@ const courses = require("../private/json/courses.json")
 
 console.log(`courses.length = ${courses.length}`)
 console.log(JSON.stringify(courses[0],null,2))
+console.log(`facdata.length = ${facdata.length}`)
 console.log(JSON.stringify(facdata[0],null,2))
 
 var OLDcourses = [
@@ -44,7 +45,8 @@ exports.showSelectedCourses = (req, res) => {
   console.log("faculty = ")
   console.log(JSON.stringify(faculty,null,2))
   res.render("courses", {
-    courses: selected_courses, instructor:email,
+    courses: selected_courses,
+    instructor:email,
     image_url:faculty.image_url
   });
 };
