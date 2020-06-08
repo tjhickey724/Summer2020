@@ -26,7 +26,7 @@ class Profile extends Component {
 
   async componentDidMount() {
    try{
-    const profile = await fetch('https://api.github.com/users/tjhickey724');
+    const profile = await fetch('https://api.github.com/users/dmonroy100');
     const profileJSON = await profile.json();
 
     if (profileJSON) {

@@ -1,0 +1,27 @@
+<div class="container">
+  <form method="post" action="courses">
+    instructor's email <input type="text" name="email">
+    <input type="submit">
+  </form>
+  <hr>
+  <div class="col-sm-6">
+    <img src="<%= image_url %>" alt="">
+  </div>
+  <div class="col-sm-6">
+    <h1 class="title">Courses recently taught by <%= instructor %> </h1>
+    <% courses.forEach(course => { %>
+    <h5>
+      <%= course.subject %>
+      <%= course.coursenum %>
+      Section <%= course.section %>
+      in term <%= course.term %>
+      Enrolled: <%= course.enrolled %><br>
+      <%= course.name %><br>
+      <%= course.instructor[0] %>
+      <%= course.instructor[1] %>
+    </h5>
+
+    <% }); %>
+  </div>
+
+</div>

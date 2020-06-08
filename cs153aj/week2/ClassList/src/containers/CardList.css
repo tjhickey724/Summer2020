@@ -1,0 +1,14 @@
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: green;
+}
+
+.flex-container-element {
+  background-color: #000000;
+  width: 300px;
+  margin: 10px;
+  text-align: center;
+  line-height: 75px;
+  font-size: 20px;
+}

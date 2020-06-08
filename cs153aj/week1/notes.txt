@@ -1,0 +1,9 @@
+
+We start by having each team report back on their solution of the homework.
+
+Then we have a lecture on Chapter 2 of the "React Projects" book and we look at
+styled HTML components -- where the CSS is included in the javascript file along with the HTML
+stateful components -- where the component has a state which changes, and is rerendered each time it changes
+Then we have an exercise where we remove all CSS from the Classes Demo Homework and replaced it by styled components.
+
+Finally, we work on modifying the Classes Demo Homework to be the Minimal Viable Product for our final projects.

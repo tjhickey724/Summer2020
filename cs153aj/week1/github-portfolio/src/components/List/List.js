@@ -20,6 +20,13 @@ const Title = styled.h2`
   padding: 10px 0;
   border-bottom: 1px solid lightGrey;
 `;
+/*
+const List = (obj) => {
+     title = obj.title
+     items = obj.items
+     return ( <> ..... </>)
+}
+*/
 
 const List = ({title,items}) => (
   <>

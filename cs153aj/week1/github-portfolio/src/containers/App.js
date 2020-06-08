@@ -14,6 +14,7 @@ const GlobalStyle = createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
   }
 `;
+/*  <div style="text-align: center"> .... </div> */
 
 const AppWrapper = styled.div`
   text-align: center;
