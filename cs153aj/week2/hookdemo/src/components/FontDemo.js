@@ -1,25 +1,18 @@
 import React, {useState} from 'react';
+import BgColor from "./BgColor";
 
 
 const FontDemo = () => {
+
     const [fontSize,setFontSize]= useState("24pt")
     function handleSelectFontEvent(event){
-      const fontSize = event.target.value;
-      if (fontSize.endsWith("pt")) {
         setFontSize(event.target.value)
-      }
-
     }
 
     const [fontColor,setFontColor]= useState("black")
-    function handleSelectColorEvent(event){
-      setFontColor(event.target.value)
-    }
 
     const [bgColor,setBgColor]= useState("white")
-    function handleSelectBgColorEvent(event){
-      setBgColor(event.target.value)
-    }
+
 
 
     const divStyle =
@@ -31,6 +24,7 @@ const FontDemo = () => {
           <p>
             Here we create and use state to change the style of this page.
           </p>
+          
           font size:
           <select value={fontSize} onChange={handleSelectFontEvent}>
             <option>12pt</option>
@@ -38,19 +32,16 @@ const FontDemo = () => {
             <option>36pt</option>
           </select>
           <br />
+
           font color:
-          <select value={fontColor} onChange={handleSelectColorEvent}>
+          <select value={fontColor} onChange={event => setFontColor(event.target.value)}>
             <option>black</option>
             <option>red</option>
             <option>blue</option>
           </select>
           <br />
-          background color:
-          <select value={bgColor} onChange={handleSelectBgColorEvent}>
-            <option>black</option>
-            <option>white</option>
-            <option>green</option>
-          </select>
+
+          <BgColor bgColor={bgColor} setBgColor={setBgColor} />
         </div>
       )
 }
