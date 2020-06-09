@@ -30,6 +30,7 @@
     "prop-types": "^15.7.1",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
+    "react-router-dom": "^5.2.0",
     "styled-components": "^5.1.1",
     "yargs": "^15.3.1"
   }

@@ -8,7 +8,7 @@ import courseData from '../assets/courses.json'
 import facultyData from '../assets/facdata.json'
 
 let courses = courseData.filter(course=>
-   course.subject=='COSI' && ! course.independent_study)
+   course.subject=='LING' && ! course.independent_study)
 
 courses.forEach(course =>
   { // add id and image_url fields to the course
