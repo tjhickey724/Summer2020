@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="col-sm-6">
+    <img src="images/brandeis.jpeg" alt="">
+  </div>
+  <div class="col-sm-6">
+      <h1>Contacts</h1>
+      <ul>
+      <% contacts.forEach(contact => {%>
+        <li> <%= contact.name %>:  <%= contact.email %> </li>
+      <% }) %>
+      </ul>
+  </div>
+</div>
