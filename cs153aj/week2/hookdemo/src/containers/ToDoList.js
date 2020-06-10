@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 
 const  ToDoList = ({data}) => {
   // here is where we keep track of the todo list
-  const [items,updateItems] = useState([])
+  const [items,updateItems] = useState(data)
 
   // here is where we keep track of the values in the form
   const [name,setName] = useState("")
@@ -14,6 +14,11 @@ const  ToDoList = ({data}) => {
     console.dir(event)
     const item = {id:items.length, name:name, description:description, complete:false}
     updateItems(items.concat(item))
+    document.getElementById('name').value = ""
+    setName("")
+    document.getElementById('description').value = ""
+    setDescription("")
+
     event.preventDefault()
   }
 
@@ -24,7 +29,7 @@ const  ToDoList = ({data}) => {
   // handle the action when an item is clicked/completed
   let flipItem = item => (event) => {
     item.complete=!item.complete
-    let newitems = items.map(x => (x.id==item.id?item:x))
+    let newitems = items.map(x => (x.id===item.id?item:x))
     updateItems(newitems)
   }
 
@@ -33,12 +38,15 @@ const  ToDoList = ({data}) => {
      <h1> ToDo List </h1>
 
      <ul>
-       {items.filter(item=>!item.complete).map(item => (
+       {items
+          .filter(item=>!item.complete)
+          .map(item => (
 
          <li key={item.id}>
            <input type="checkbox"
                   onChange={flipItem(item)}
-                  name={"complete"+item.id} value={!item.complete} />
+                  name={"complete"+item.id}
+                  value={!item.complete} />
            {item.name} : {item.description}
          </li>
 
@@ -46,14 +54,22 @@ const  ToDoList = ({data}) => {
      </ul>
      <form onSubmit={addItem}>
        <h2>New todo</h2>
-       name: <input type="text" name="name" onChange={updateName}/><br />
-       description: <input type="text" name="description" onChange={updateDescription} /><br />
+       name: <input type="text" id="name" name="name" onChange={updateName}/><br />
+       description: <input type="text" id="description" name="description" onChange={updateDescription} /><br />
        <input type="submit" value="add item to todo list" />
      </form>
 
      <h2>Here is the items JSON object</h2>
      <pre>
-       {JSON.stringify(items,null,2)}
+     items ={JSON.stringify(items,null,2)}
+     </pre>
+     <br />
+     <pre>
+     name = {JSON.stringify(name,null,2)}
+     </pre>
+     <br />
+     <pre>
+     description = {JSON.stringify(description, null,2)}
      </pre>
    </>
  );

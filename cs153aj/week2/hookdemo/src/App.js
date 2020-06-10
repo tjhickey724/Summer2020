@@ -45,7 +45,7 @@ export default function App() {
             <FontDemo />
           </Route>
           <Route path="/todoList">
-            <ToDoList data={[]}/>
+            <ToDoList data={[{name:"walk dog",description:"around block"}]}/>
           </Route>
           <Route path="/">
             <Home />
