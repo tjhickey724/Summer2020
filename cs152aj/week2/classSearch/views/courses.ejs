@@ -62,6 +62,20 @@
           <br>
           <a href="https://www.brandeis.edu/facultyguide/person.html?emplid=<%= course.faculty.emplid%> ">faculty guide</a>
           <br>
+          <a href="/writeReview/<%=
+                course.subject %>/<%=
+                course.coursenum %>/<%=
+                course.section %>/<%=
+                course.term %>">
+              Write a Review</a> or
+          <a href="/seeReviews/<%=
+                course.subject %>/<%=
+                course.coursenum %>/<%=
+                course.section %>/<%=
+                course.term %>">
+              See the Reviews </a><br>
+
+          <br>
           <img src ="<%= course.faculty.image_url %>" alt="fac photo">
 
         </li>

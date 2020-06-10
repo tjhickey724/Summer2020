@@ -1,10 +1,12 @@
 import React, {useState} from 'react';
 import BgColor from "./BgColor";
+import FontFamily from "./FontFamily";
 
 
 const FontDemo = () => {
 
     const [fontSize,setFontSize]= useState("24pt")
+
     function handleSelectFontEvent(event){
         setFontSize(event.target.value)
     }
@@ -13,10 +15,11 @@ const FontDemo = () => {
 
     const [bgColor,setBgColor]= useState("white")
 
+    const [fontFamily,setFontFamily] = useState("serif")
 
 
     const divStyle =
-      {fontSize:fontSize, color:fontColor, backgroundColor:bgColor}
+      {fontFamily:fontFamily, fontSize:fontSize, color:fontColor, backgroundColor:bgColor}
 
     return (
         <div style={divStyle}>
@@ -24,7 +27,7 @@ const FontDemo = () => {
           <p>
             Here we create and use state to change the style of this page.
           </p>
-          
+
           font size:
           <select value={fontSize} onChange={handleSelectFontEvent}>
             <option>12pt</option>
@@ -40,7 +43,7 @@ const FontDemo = () => {
             <option>blue</option>
           </select>
           <br />
-
+          <FontFamily font={fontFamily} setFont={setFontFamily} />
           <BgColor bgColor={bgColor} setBgColor={setBgColor} />
         </div>
       )

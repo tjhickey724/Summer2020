@@ -5,11 +5,13 @@ import {
   Route,
   Link
 } from "react-router-dom";
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import About from "./components/About";
 import FontDemo from "./components/FontDemo";
 import Home from "./components/Home";
+import ToDoList from "./containers/ToDoList";
 
 
 export default function App() {
@@ -18,14 +20,17 @@ export default function App() {
     <div className='container-fluid'>
 
           <ul className="nav">
-            <li className="navItem">
+            <li className="navItem btn btn-sm">
               <Link to="/">Home&nbsp;</Link>
             </li>
-            <li className="navItem">
+            <li className="navItem btn btn-sm">
               <Link to="/about">About&nbsp;</Link>
             </li>
             <li className="navItem">
-              <Link to="/fontDemo">FontDemo</Link>
+              <a href="/fontDemo" className="btn btn-sm">FontDemo </a>
+            </li>
+            <li className="navItem">
+              <a href="/todoList" className="btn btn-sm">ToDoList </a>
             </li>
           </ul>
 
@@ -38,6 +43,9 @@ export default function App() {
           </Route>
           <Route path="/fontDemo">
             <FontDemo />
+          </Route>
+          <Route path="/todoList">
+            <ToDoList data={[]}/>
           </Route>
           <Route path="/">
             <Home />
