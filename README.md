@@ -1,4 +1,4 @@
-# Testing
+# Summer2020 Code Repository
 
 This is a folder containing all of the project code used to teach CS152aj and CS153aj during the Summer2020 session at Brandeis.
 
