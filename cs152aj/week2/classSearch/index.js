@@ -11,6 +11,15 @@ const
   express = require("express"),
   app = express();
 
+const axios = require("axios");
+const errorController = require('./controllers/errorController');
+const layouts = require("express-ejs-layouts");
+
+app.set("view engine", "ejs");
+app.set("port", process.env.PORT || 3000);
+
+app.use(layouts);
+app.use(express.static("public"));
 /*
   The next two calls to app.use tell the app router
   to parse the url data and the form data into json
@@ -64,6 +73,27 @@ app.get("/help", (req, res) => {
 
   res.send("Under construction");
 })
+
+app.get("/covid19/:method",
+  async (req,res,next) => {
+    try {
+      let method = req.params.method
+      let result = await axios.get("https://covidtracking.com/api/v1/states/daily.json")
+      let data = result['data']
+      if (method=="json"){
+         res.json(data)
+       } else {
+         res.render('covid19',{data:data})
+       }
+    }
+    catch(e){
+      next(e)
+    }
+  })
+
+app.use(errorController.pageNotFoundError);
+app.use(errorController.internalServerError);
+
 
 app.listen(port, () => {
   console.log(`The Express.js server has started and is listening

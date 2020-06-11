@@ -75,6 +75,7 @@ app.get("/writeReview/:subj/:num/:sec/:term",
 
 const Review = require('./models/Review')
 
+
 app.post("/addReview",
   async (req,res,next) => {
     try {
@@ -116,6 +117,29 @@ app.get("/showReviews/:subj/:num/:sec/:term",
       res.locals.sec = req.params.sec
       res.locals.term = req.params.term
       res.render('showReviews')
+    }
+    catch(e){
+      next(e)
+    }
+  }
+)
+
+app.get("/showReviews/:subj/:num/:sec/:term/json",
+  async (req,res,next) => {
+    try{
+      const query={
+        subject:req.params.subj,
+        courseNum:req.params.num,
+        section:req.params.sec,
+        term:req.params.term,
+      }
+      res.locals.reviews =
+         await Review.find(query)
+      res.locals.subj = req.params.subj
+      res.locals.num = req.params.num
+      res.locals.sec = req.params.sec
+      res.locals.term = req.params.term
+      res.json(res.locals.reviews)
     }
     catch(e){
       next(e)
