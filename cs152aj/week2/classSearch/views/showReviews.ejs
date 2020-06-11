@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="col-sm-6">
+    <img src="images/brandeis.jpeg" alt="">
+  </div>
+  <div class="col-sm-6">
+    <h1>Reviews of <br>
+    <%= subj %> <%= num %> <%= sec %> <%= term %>
+   </h1>
+   <ol>
+   <% reviews.forEach(review => { %>
+     <li> <%= review.reviewer %>:: <%= review.review %> </li>
+   <% }) %>
+   </ol>
+   </div>
+</div>

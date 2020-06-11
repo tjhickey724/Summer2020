@@ -41,21 +41,20 @@ app.get("/contact", homeController.showSignUp);
 
 const Contact =require("./models/Contact")
 app.get("/showContacts",
-   async (req,res) => {
+   async (req,res,next) => {
      try {
        res.locals.contacts = await Contact.find({})
        //res.json(res.locals.contacts)
        res.render('showContacts')
      }
-     catch(theError){
-       console.log("Error:")
-       res.send("There was an error in /showContacts!")
+     catch(e){
+       next(e)
 
      }
    });
 
 app.post('/contact',
-  async (req,res) => {
+  async (req,res,next) => {
     try {
       let name = req.body.name
       let email = req.body.email
@@ -64,12 +63,64 @@ app.post('/contact',
       res.redirect('/showContacts')
     }
     catch(e) {
-      res.send("error in addContact")
+      next(e)
     }
   })
 
 app.get("/writeReview/:subj/:num/:sec/:term",
-   res.render("writeReview")
+  (req,res) => {
+    res.render("writeReview",req.params)
+  }
+)
+
+const Review = require('./models/Review')
+
+app.post("/addReview",
+  async (req,res,next) => {
+    try {
+      let newReview = new Review({
+        subject: req.body.subj,
+        courseNum: req.body.num,
+        section: req.body.sec,
+        term: req.body.term,
+        reviewer: req.body.reviewer,
+        review: req.body.review
+      })
+
+      await newReview.save()
+      res.redirect(`/showReviews/${
+                  req.body.subj}/${
+                  req.body.num}/${
+                  req.body.sec}/${
+                  req.body.term}`)
+    }
+    catch(e){
+      next(e)
+    }
+  }
+)
+
+app.get("/showReviews/:subj/:num/:sec/:term",
+  async (req,res,next) => {
+    try{
+      const query={
+        subject:req.params.subj,
+        courseNum:req.params.num,
+        section:req.params.sec,
+        term:req.params.term,
+      }
+      res.locals.reviews =
+         await Review.find(query)
+      res.locals.subj = req.params.subj
+      res.locals.num = req.params.num
+      res.locals.sec = req.params.sec
+      res.locals.term = req.params.term
+      res.render('showReviews')
+    }
+    catch(e){
+      next(e)
+    }
+  }
 )
 
 

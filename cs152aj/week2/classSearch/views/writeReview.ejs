@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="col-sm-6">
+    <img src="images/brandeis.jpeg" alt="">
+  </div>
+  <div class="col-sm-6">
+    <h2>Review for <br>
+      <%= subj %> <%= num %> <%= sec %> <%= term %>
+     </h2>
+    <form method="post" action="/addReview">
+
+     <input type="hidden" name="subj" value="<%= subj %>">
+     <input type="hidden" name="num" value="<%= num %>">
+     <input type="hidden" name="sec" value="<%= sec %>">
+     <input type="hidden" name="term" value="<%= term %>">
+     <hr>
+     <input type="text" name="reviewer" placeholder="Your email"><br>
+     <h2>Your Review</h2>
+     <textarea name="review" rows="5" cols="40"></textarea>
+     <hr>
+     <input type="submit" class="btn btn-sm btn-danger"
+              value="submit your review">
+
+    </form>
+  </div>
+</div>
