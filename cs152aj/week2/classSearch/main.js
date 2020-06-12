@@ -85,7 +85,8 @@ app.post("/addReview",
         section: req.body.sec,
         term: req.body.term,
         reviewer: req.body.reviewer,
-        review: req.body.review
+        review: req.body.review,
+        createdAt: new Date(),
       })
 
       await newReview.save()

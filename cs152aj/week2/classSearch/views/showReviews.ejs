@@ -8,7 +8,10 @@
    </h1>
    <ol>
    <% reviews.forEach(review => { %>
-     <li> <%= review.reviewer %>:: <%= review.review %> </li>
+     <li> <%= review.reviewer %>::
+         <%= review.review %> ::
+         <%= review.createdAt %> 
+      </li>
    <% }) %>
    </ol>
    </div>

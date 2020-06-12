@@ -8,7 +8,8 @@ const reviewSchema = Schema( {
   section: String,
   term: String,
   reviewer: String,
-  review: String
+  review: String,
+  createdAt: Date,
 });
 
 module.exports = mongoose.model('Review',reviewSchema);

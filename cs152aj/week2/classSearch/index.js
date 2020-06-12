@@ -46,7 +46,7 @@ function showParams(req){
 }
 
 app.get("/", (req, res) => {
-  res.send("Hello, Universe!");
+  res.render("index");
 })
 
 app.get("/bio", (req, res) => {
@@ -78,7 +78,8 @@ app.get("/covid19/:method",
   async (req,res,next) => {
     try {
       let method = req.params.method
-      let result = await axios.get("https://covidtracking.com/api/v1/states/daily.json")
+      let result = await axios.get("https://covidtracking.com/api/v1/states/current.json");
+      //https://covidtracking.com/api/v1/states/daily.json")
       let data = result['data']
       if (method=="json"){
          res.json(data)
