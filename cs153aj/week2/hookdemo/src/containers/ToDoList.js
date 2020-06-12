@@ -15,7 +15,7 @@ const  ToDoList = ({data}) => {
   const addItem = (event) => {
     // we need to generate a unique id for the new items
     // so we get the id of the last item and add 1
-    const lastId = items[items.length-1].id
+    const lastId = items.length==0?0:items[items.length-1].id
     const item = {id:lastId+1, name:name, description:description, complete:false}
     updateItems(items.concat(item))
     document.getElementById('name').value = ""
