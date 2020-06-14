@@ -8,7 +8,10 @@ store using an object where the keys and values are lists of strings
 */
 
 router.use((req,res,next) => {
-  console.log(`LOGGING: ${req.url}: ${req.params}:: ${req.body}:: ${new Date()}`)
+  console.log(`LOGGING: ${req.url
+      }: ${JSON.stringify(req.params,null,2)
+      }:: ${JSON.stringify(req.body,null,2)
+      }:: ${new Date()}`)
   next()
 })
 

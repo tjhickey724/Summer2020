@@ -10,10 +10,6 @@ store using an object where the keys and values are lists of strings
 let data={}
 let counter=0
 
-router.use((req,res,next) => {
-  console.log(`${req.url}: ${req.params}:: ${req.body}:: ${new Date()}`)
-  next()
-})
 /* add the value in the body to the list associated to the key */
 router.post('/add/:key', (req, res, next) => {
   const key = req.params.key
