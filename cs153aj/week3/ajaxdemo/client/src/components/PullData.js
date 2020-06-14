@@ -3,7 +3,7 @@ import useFetch from "../useFetch"
 
 const PullData = () => {
 
-    let {response} = useFetch(
+    let {response,error,loading} = useFetch(
       "http://localhost:3500/db/dump", {query:{}}
     );
 
@@ -71,6 +71,8 @@ const PullData = () => {
 
        <hr />
 
+       {loading? <h2> ... </h2> : ""}
+       {error? <h2>Error: the server might not be running! </h2> : ""}
           <ul>
           {/* here we make sure that response['todo'] is a list */
            response &&
@@ -87,6 +89,7 @@ const PullData = () => {
 
           ))}
         </ul>
+
         {/*
           <pre>
               data = {JSON.stringify(response,null,3)}
