@@ -1,0 +1,12 @@
+
+
+  <div class="jumbotron">
+    <h1> Authentication Demo </h1>
+    <p>Welcome to the Authentication Demo </p>
+    <ul>
+      <li><a href="/dbdemo">See database API </a></li>
+      <% if (loggedIn) {%>
+      <li><a href="/profile">See your profile </a></li>
+      <% } %>
+    </ul>
+  </div>

@@ -1,0 +1,39 @@
+<div class="jumbotron">
+  <h1>Simple API</h1>
+  <p> This shows how to create a simple API </p>
+</div>
+
+<h2> Adding a value to a list of values by key</h2>
+<pre>
+/db/add/:key/:value adds the value to the list associated to the key
+</pre>
+e.g. <a href="/db/add/names/Tim">/db/add/names/Tim</a>
+
+<h2>Showing all keys and their lists</h2>
+<pre>
+/db/dump returns the lists for all of the keys
+</pre>
+e.g. <a href="/db/dump">/db/dump</a>
+
+<h2>Reseting the list for a key</h2>
+<pre>
+/db/reset/:key resets the list for the key to []
+</pre>
+e.g. <a href="/db/reset/names">/db/reset/names</a>
+
+<h2>Using a form to add a value to a list for a key</h2>
+<pre>
+/db/add/:key adds the value sent in the form to the list associated to the key
+</pre>
+e.g.
+<pre>
+&lt;form method="post" action="/db/add/name"&gt;
+  &lt;input type="text" name="val"&gt;&lt;br&gt;
+  &lt;input type="submit"&gt;
+&lt;/form&gt;
+</pre>
+
+<form method="post" action="/db/add/name">
+  <input type="text" name="val"><br>
+  <input type="submit">
+</form>
