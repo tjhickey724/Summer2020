@@ -8,4 +8,12 @@ To add authentication...
 * copy config folder with auth.js and passport.js
 * add login/logout buttons to layout.ejs
 
-and maybe other stuff...
+
+ npm install express-session 
+add bin folder and www file inside it ..
+ npm install connect-flash 
+npm install connect-mongo
+ npm install passport-google-auth 
+npm install passport 
+
+ add  module.exports=app to the bottom of app.js 

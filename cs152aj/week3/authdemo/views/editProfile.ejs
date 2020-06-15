@@ -1,0 +1,45 @@
+<div class="jumbotron">
+  <h1>Your Profile</h1>
+  <p>
+    Update your profile information!
+  </p>
+</div>
+
+<div class="row">
+  <div class="col-sm-4">
+  </div>
+  <form method="post" action="editProfile">
+    <div class="col-sm-4">
+        <table class="table table-bordered">
+          <tbody>
+            <tr>
+              <td>googlename</td>
+              <td><%= user.googlename %></td>
+            </tr>
+            <tr>
+              <td>googleemail</td>
+              <td><%= user.googleemail %></td>
+            </tr>
+            <tr>
+              <td>username</td>
+              <td>
+                <input type="text" name="username"
+                   value="<%= user.username %>">
+              </td>
+            </tr>
+            <tr>
+              <td>age</td>
+              <td>
+                <input type="text" name="age"
+                   value="<%= user.age %>">
+              </td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+
+  <div class="col-sm-4">
+  </div>
+</div>
+<input class="btn btn-lg btn-danger" type="submit" value="update Profile">
+</form>

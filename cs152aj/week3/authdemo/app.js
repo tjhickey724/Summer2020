@@ -21,6 +21,7 @@ const loggingRouter = require('./routes/logging');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const dbRouter = require('./routes/db');
+const toDoRouter = require('./routes/todo');
 
 
 
@@ -46,9 +47,33 @@ app.use('/users', usersRouter);
 app.use('/db',dbRouter);
 app.use('/dbdemo',
     (req,res) => res.render('dbdemo'))
-app.use('/profile',
+
+app.use('/db',dbRouter);
+app.use('/todo',toDoRouter);
+
+app.get('/profile',
     isLoggedIn,
     (req,res) => res.render('profile'))
+app.get('/editProfile',
+    isLoggedIn,
+    (req,res) => res.render('editProfile'))
+app.post('/editProfile',
+    isLoggedIn,
+    async (req,res) => {
+      try {
+        let username = req.body.username
+        let age = req.body.age
+        req.user.username = username
+        req.user.age = age
+        await req.user.save()
+        res.redirect('/profile')
+      } catch (error) {
+        next(error)
+      }
+
+    })
+
+
 app.use('/data',(req,res) => {
   res.json([{a:1,b:2},{a:5,b:3}]);
 })
