@@ -1,0 +1,9 @@
+To add authentication...
+* download authenticate.js and put it in Routes folder
+* modify main.js to be renamed to app.js and to use the authRouter
+  const authRouter = require('./routes/authentication');
+  app.use(authRouter)
+* create User.js model in the models folder
+* copy login.ejs login-error.ejs to views
+* copy config folder with auth.js and passport.js
+* add login/logout buttons to layout.ejs

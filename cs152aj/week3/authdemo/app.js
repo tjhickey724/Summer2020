@@ -46,7 +46,8 @@ app.use('/users', usersRouter);
 app.use('/db',dbRouter);
 app.use('/dbdemo',
     (req,res) => res.render('dbdemo'))
-app.use('/profile',isLoggedIn,
+app.use('/profile',
+    isLoggedIn,
     (req,res) => res.render('profile'))
 app.use('/data',(req,res) => {
   res.json([{a:1,b:2},{a:5,b:3}]);
