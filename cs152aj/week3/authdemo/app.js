@@ -88,14 +88,16 @@ app.get('/profile',
 app.get('/editProfile',
     isLoggedIn,
     (req,res) => res.render('editProfile'))
+
 app.post('/editProfile',
     isLoggedIn,
-    async (req,res) => {
+    async (req,res,next) => {
       try {
         let username = req.body.username
         let age = req.body.age
         req.user.username = username
         req.user.age = age
+        req.user.imageURL = req.body.imageURL
         await req.user.save()
         res.redirect('/profile')
       } catch (error) {

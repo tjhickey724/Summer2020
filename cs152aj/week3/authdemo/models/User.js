@@ -12,6 +12,7 @@ var userSchema = Schema( {
   googleemail:String,
   username:String,
   age:Number,
+  imageURL: String,
 } );
 
 module.exports = mongoose.model( 'User', userSchema );
