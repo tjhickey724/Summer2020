@@ -51,9 +51,40 @@ app.use('/dbdemo',
 app.use('/db',dbRouter);
 app.use('/todo',toDoRouter);
 
+app.get('/profiles',
+    isLoggedIn,
+    async (req,res,next) => {
+      try {
+        res.locals.profiles = await User.find({})
+        res.render('profiles')
+      }
+      catch(e){
+        next(e)
+      }
+    }
+  )
+
+app.get('/publicprofile/userId:',
+    async (req,res,next) => {
+      try {
+        let userId = req.params.userId
+        res.locals.profile = await User.findOne({_id:userId})
+        res.render('publicprofile')
+      }
+      catch(e){
+        console.log("Error in /profile/userId:")
+        next(e)
+      }
+    }
+)
+
+
 app.get('/profile',
     isLoggedIn,
-    (req,res) => res.render('profile'))
+    (req,res) => {
+      res.render('profile')
+    })
+
 app.get('/editProfile',
     isLoggedIn,
     (req,res) => res.render('editProfile'))

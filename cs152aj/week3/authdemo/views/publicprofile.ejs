@@ -1,0 +1,38 @@
+<div class="jumbotron">
+  <h1>Your Profile</h1>
+  <p> this comes from the google authentication
+      and from the info you provide when you
+      edit this page!
+  </p>
+</div>
+<hr>
+<a href="editProfile">Edit</a>
+<hr>
+<div class="row">
+  <div class="col-sm-4">
+  </div>
+  <div class="col-sm-4">
+      <table class="table table-bordered">
+        <tbody>
+          <tr>
+            <td>googlename</td>
+            <td><%= profile.googlename %> </td>
+          </tr>
+          <tr>
+            <td>googleemail</td>
+            <td> (hidden) </td>
+          </tr>
+          <tr>
+            <td>username</td>
+            <td><%= profile.username %> </td>
+          </tr>
+          <tr>
+            <td>age</td>
+            <td><%= profile.age %> </td>
+          </tr>
+        </tbody>
+      </table>
+  </div>
+  <div class="col-sm-4">
+  </div>
+</div>
