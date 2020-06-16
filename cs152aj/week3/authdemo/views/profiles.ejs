@@ -1,15 +1,16 @@
 <div class="jumbotron">
   <h1>Registered Users</h1>
   <p> this comes from the google authentication
-      and from the info you provide 
+      and from the info you provide
   </p>
 </div>
 <hr>
 <ol>
   <% profiles.forEach(profile => { %>
     <li>
-          <%= profile.googlename %><br>
-          <%=profile.googleemail %>
+          <%= profile.googlename %>
+          <a href="/publicprofile/<%= profile._id %>">
+            (link)</a>
     </li>
   <% }) %>
 </ol>

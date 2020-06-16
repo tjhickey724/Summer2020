@@ -64,7 +64,7 @@ app.get('/profiles',
     }
   )
 
-app.get('/publicprofile/userId:',
+app.use('/publicprofile/:userId',
     async (req,res,next) => {
       try {
         let userId = req.params.userId
