@@ -5,8 +5,11 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const cors = require('cors');
 const layouts = require("express-ejs-layouts");
+const auth = require('./config/auth.js');
+
 
 const mongoose = require( 'mongoose' );
+//mongoose.connect( `mongodb+srv://${auth.atlasAuth.username}:${auth.atlasAuth.password}@cluster0-yjamu.mongodb.net/authdemo?retryWrites=true&w=majority`);
 mongoose.connect( 'mongodb://localhost/authDemo');
 
 const db = mongoose.connection;
