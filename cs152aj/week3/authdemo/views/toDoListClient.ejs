@@ -21,8 +21,20 @@
 
   </div>
 
+  <div>
+    <input type="text" id="num"><br>
+    <button onclick="square()">square it</button><br>
+    result = <span id="result"></span>
+  </div>
 
   <script>
+
+    function square(){
+      const x = document.getElementById("num").value
+      const n = parseInt(x)
+      console.log(`x=${x}  n=${n} n^2 = ${n*n}`)
+      document.getElementById("result").innerHTML= n*n
+    }
     /*
       Here is the code to maintain the todolist entirely locally
     */
@@ -49,6 +61,7 @@
           try{
             let oldtodo = document.getElementById(x)
             let data = await postData(`/todoAjax/remove`,{itemId:x})
+            console.log(JSON.stringify(data,null,2))
             oldtodo.parentNode.removeChild(oldtodo);
           } catch(e) {
             alert(`error3: ${e}`)
