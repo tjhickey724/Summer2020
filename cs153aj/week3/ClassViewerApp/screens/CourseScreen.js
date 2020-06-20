@@ -3,6 +3,7 @@ import * as WebBrowser from 'expo-web-browser';
 import React, {useState,useEffect} from 'react';
 import { TextInput, Button, FlatList, Image, StyleSheet, Text, View } from 'react-native';
 import { RectButton, ScrollView } from 'react-native-gesture-handler';
+import AsyncStorage from '@react-native-community/async-storage';
 
 import Course from '../components/Course';
 
@@ -12,9 +13,34 @@ data.sort((a,b) => b.enrolled-a.enrolled)
 let theData = data.filter(x => (x.coursenum === "164A"))
 console.log(`data.length=${data.length}`)
 
+const getName = async () => {
+  try {
+    const jsonValue = await AsyncStorage.getItem('name')
+    return jsonValue != null ? JSON.parse(jsonValue) : "???";
+  } catch(e) {
+    // error reading value
+  }
+}
+
+const storeName = async (value) => {
+  try {
+    const jsonValue = JSON.stringify(value)
+    await AsyncStorage.setItem('name', jsonValue)
+  } catch (e) {
+    // saving error
+  }
+}
+
 export default function CourseScreen() {
    const [selectedData,setSelectedData] = useState(theData)
    const [subject, setSubject] = React.useState('COSI');
+   const [name, setName] = React.useState('?');
+   const [preferredName, setPreferredName] = React.useState("?")
+
+   React.useEffect(() => {
+      let n = getName()
+      setPreferredName(n)
+  },[name])
 
   return (
     <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
@@ -26,8 +52,19 @@ export default function CourseScreen() {
         <Text>
             Subject:
         <TextInput
-           onChangeText = {text => setSubject(text)}
+           onChangeText = {
+             text => {setSubject(text)}}
            value = {subject}
+        />
+        </Text>
+      </View>
+
+      <View style={{margin:10}}>
+        <Text>
+            Preferred Name:
+        <TextInput
+           onChangeText = {text => console.log(text)}
+           value = {name}
         />
         </Text>
       </View>
