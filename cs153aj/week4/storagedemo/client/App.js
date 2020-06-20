@@ -4,6 +4,7 @@ import { StyleSheet, Text, View, Button } from 'react-native';
 import Counter from "./components/Counter"
 import Counter0 from "./components/Counter0"
 import CloudCounter from "./components/CloudCounter"
+import CloudCounter0 from "./components/CloudCounter0"
 
 
 
@@ -29,7 +30,6 @@ export default function App() {
           the counter variable.
       </Text>
       <Counter />
-      <Counter0 />
       <CloudCounter />
       <Text style={{fontSize:12}}>
            Hit both counters a few times and then reload the page on the web.

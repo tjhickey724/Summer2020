@@ -17,6 +17,10 @@ export default function Counter() {
     setValue(newValue);
   };
 
+  useEffect(() => {
+    readItemFromStorage();
+  }, []);
+
   const incrementStoredValue = () => {
     writeItemToStorage(value+1)
     }
@@ -25,9 +29,7 @@ export default function Counter() {
     writeItemToStorage(0)
   }
 
-  useEffect(() => {
-    readItemFromStorage();
-  }, []);
+
 
   return (
     <View style={styles.container}>
