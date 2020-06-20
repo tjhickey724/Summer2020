@@ -33,7 +33,7 @@ export default function Counter() {
 
   return (
     <View style={styles.container}>
-      <Text>This Counter Uses AsyncStorage</Text>
+      <Text style={{fontSize:24}}>This Counter Uses AsyncStorage</Text>
       <Button onPress={incrementStoredValue} title="increment" />
       <Text> {value} </Text>
       <Button onPress={initStoredValue} title="reset" />

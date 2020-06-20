@@ -72,10 +72,10 @@ export default function CloudCounter() {
   let view = ""
   if (loggingIn) {
     view =
-        <View style={{margin:10}}>
-          <Text>
+        <View style={{margin:10,backgroundColor:"#bbb"}}>
+          <Text style={{margin:20}}>
               Login:
-              <TextInput
+              <TextInput style={{margin:2, backgroundColor:"#fff"}}
                  onChangeText = {
                    text => {setEmail(text)}}
                  value = {email}
@@ -87,7 +87,7 @@ export default function CloudCounter() {
     view =
        <View style={{margin:10}}>
           <Button onPress={incrementStoredValue} style={{margin:5}} title="increment" />
-          <Text> {value} </Text>
+          <Text style={{backgroundColor:"#aaa",margin:5}}> {value} </Text>
           <View style={{margin:5}} >
             <Button onPress={initStoredValue} style={{margin:5}} title="reset" />
           </View>
@@ -99,7 +99,7 @@ export default function CloudCounter() {
 
   return (
     <View style={styles.container}>
-      <Text>This Counter Uses DB-backed Cloud Storage</Text>
+      <Text style={{fontSize:24}}>This Counter Uses DB-backed Cloud Storage</Text>
       {view}
     </View>
   );
