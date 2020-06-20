@@ -26,7 +26,7 @@ export default function CloudCounter() {
     })
     const itemParsed = await item.json()
     console.log(`item = ${itemParsed}`)
-    const v = parseInt(itemParsed)
+    const v = parseInt(itemParsed) || 0
     setValue(v)
     console.log(`just set value to ${v}, now value=${value}`)
     //setValue(JSON.parse(item));
@@ -60,9 +60,8 @@ export default function CloudCounter() {
   }
 
   const logIn = () => {
-    alert("logging in")
     setDeviceId(email)
-    readItemFromStorage()
+    //readItemFromStorage()
     setLoggingIn(false)
   }
 
@@ -70,25 +69,38 @@ export default function CloudCounter() {
     readItemFromStorage();
   }, [deviceId,loggingIn]);
 
+  let view = ""
+  if (loggingIn) {
+    view =
+        <View style={{margin:10}}>
+          <Text>
+              Login:
+              <TextInput
+                 onChangeText = {
+                   text => {setEmail(text)}}
+                 value = {email}
+              />
+          </Text>
+          <Button onPress={logIn} style={{margin:5}} title="connect to server" />
+        </View>
+  } else {
+    view =
+       <View style={{margin:10}}>
+          <Button onPress={incrementStoredValue} style={{margin:5}} title="increment" />
+          <Text> {value} </Text>
+          <View style={{margin:5}} >
+            <Button onPress={initStoredValue} style={{margin:5}} title="reset" />
+          </View>
+          <View style={{margin:5}} >
+            <Button onPress={() => setLoggingIn(true)} style={{margin:5}} title="Log out" />
+          </View>
+       </View>
+  }
+
   return (
     <View style={styles.container}>
       <Text>This Counter Uses DB-backed Cloud Storage</Text>
-
-      <View style={{margin:10}}>
-        <Text>
-            Email address:
-            <TextInput
-               onChangeText = {
-                 text => {setEmail(text)}}
-               value = {email}
-            />
-        </Text>
-        <Button onPress={logIn} title="connect to server" />
-      </View>
-
-      <Button onPress={incrementStoredValue} title="press" />
-      <Text> {value} </Text>
-      <Button onPress={initStoredValue} title="reset" />
+      {view}
     </View>
   );
 }

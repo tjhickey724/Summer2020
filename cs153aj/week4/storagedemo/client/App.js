@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, Text, ScrollView, View, Button } from 'react-native';
 
 import Counter from "./components/Counter"
 import Counter0 from "./components/Counter0"
@@ -10,7 +10,7 @@ import CloudCounter0 from "./components/CloudCounter0"
 
 export default function App() {
   return (
-    <View style={styles.container}>
+    <ScrollView contentContainerStyle={styles.container}>
       <Text style={{fontSize:36}}>Persistent Storage  Demo</Text>
       <Text style={{fontSize:12}}>
           This app shows how to implement a counter using three techniques:
@@ -37,7 +37,7 @@ export default function App() {
            with your camera).  The counter with local state will be back to zero
            but the counter with local storage will have kept its value.
       </Text>
-    </View>
+    </ScrollView>
   );
 }
 

@@ -45,10 +45,14 @@ app.post('/get',
       const userInfo = await UserInfo.findOne({key:key,deviceId:deviceId})
       console.log(`returning value=${userInfo && userInfo.value}`)
       console.dir(userInfo._doc)
-      res.json(userInfo && userInfo.value)
+      if (userInfo) {
+        res.json(userInfo.value)
+      } else {
+        res.json("null")
+      }
     }
     catch(e){
-      next(e)
+      res.json("null")
     }
   }
 )
