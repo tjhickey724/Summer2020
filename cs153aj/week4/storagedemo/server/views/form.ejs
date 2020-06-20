@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Simple DB demo </title>
+</head>
+<body>
+    <h1>Simple key/value database-backed service</h1>
+    <p>
+        This lets you store and retreive arbitrary JSON values
+        in the server based on a key and deviceId.  You need to
+        hit the back button after you press the submit key to get
+        back to this page.
+    </p>
+    <form method="POST" action="/store">
+        STORE<br>
+        <input type="text" name="key"> key <br>
+        <input type="text" name="deviceId"> deviceId <br>
+        <input type="text" name="value"> value <br>
+        <input type="submit"> key <br>
+    </form>
+    <hr>
+    <form method="POST" action="/get">
+        RETRIEVE<br>
+        <input type="text" name="key"> key <br>
+        <input type="text" name="deviceId"> deviceId <br>
+        <input type="submit"> key <br>
+    </form>
+</body>
+</html>

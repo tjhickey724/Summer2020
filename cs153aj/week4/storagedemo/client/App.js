@@ -3,24 +3,34 @@ import { StyleSheet, Text, View, Button } from 'react-native';
 
 import Counter from "./components/Counter"
 import Counter0 from "./components/Counter0"
+import CloudCounter from "./components/CloudCounter"
 
 
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text style={{fontSize:36}}>AsyncStorage  Demo</Text>
+      <Text style={{fontSize:36}}>Persistent Storage  Demo</Text>
       <Text style={{fontSize:12}}>
-          This app shows how to implement a counter using local storage
-          and compares it to an app which only uses local state. The key
-          idea is to update the local storage each time the value is changed
+          This app shows how to implement a counter using three techniques:
+          no storage, local storage, and cloud storage.
+      </Text>
+      <Text style={{fontSize:12}}>
+          The main idea with local storage is to
+          update the local storage each time the value is changed
           and to initialize the value with the useEffect function that will
           read the item from storage and set the local state to that value.
           Also, you need to use JSON.stringify/JSON.parse to convert between
           a Javascript object in the code and a string in the local storage.
       </Text>
+      <Text style={{fontSize:12}}>
+          The main idea with cloud storage is to update
+          send an HTTP request to the server each time you read or update
+          the counter variable.
+      </Text>
       <Counter />
       <Counter0 />
+      <CloudCounter />
       <Text style={{fontSize:12}}>
            Hit both counters a few times and then reload the page on the web.
            Or kill the job and restart it on the phone (scanning the QR code again
