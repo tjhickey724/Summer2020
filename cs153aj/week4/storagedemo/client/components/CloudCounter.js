@@ -2,18 +2,31 @@ import React,{useState,useEffect} from 'react';
 import { StyleSheet, Text, TextInput, View, Button } from 'react-native';
 var uuid = require('react-native-uuid');
 
-//const deviceId = "1234";
+const realDeviceId = uuid.v4(); // this generates a unique ID for this device.
 
 export default function CloudCounter() {
   const [value, setValue] = useState(0);
   const [deviceId,setDeviceId] = useState("1234")
-  const [email, setEmail] = useState("???@brandeis.edu");
+  const [email, setEmail] = useState("anonymous@brandeis.edu");
   const [loggingIn,setLoggingIn] = useState(true)
 
-  const readItemFromStorage = async () => {
+  const localserverURL='http://localhost:3000'  // for local server
+  const remoteserverURL = 'http://gracehopper.cs-i.brandeis.edu:3500'
+  /*
+    The next two functions use fetch to communicate with
+    the webserver. They use the variable "deviceId" to keep
+    distinguish between different users. For now, we use
+    an unchecked email address as the deviceId.  Our next step
+    would be to add google authentication to the server and then
+    add a component to verify that the owner of this device
+    is able to log in to the server with that email. We will
+    do that next week... For now we work on the honor system
+    to simplify coding...
+  */
+  const readItemFromCloud = async () => {
     //const item = await getItem();
-    console.log("about to read item from storage: deviceId="+deviceId)
-    const item = await fetch("http://localhost:3000/get",{
+    console.log("about to read item from Cloud: deviceId="+deviceId)
+    const item = await fetch(`${remoteserverURL}/get`,{
       method:"POST",
       headers: {
         Accept: 'application/json',
@@ -32,10 +45,10 @@ export default function CloudCounter() {
     //setValue(JSON.parse(item));
   };
 
-  const writeItemToStorage = async newValue => {
+  const writeItemToCloud = async newValue => {
     //await setItem(JSON.stringify(newValue));
 
-    await fetch("http://localhost:3000/store",{
+    await fetch(`${remoteserverURL}/store`,{
       method:"POST",
       headers: {
         Accept: 'application/json',
@@ -52,21 +65,21 @@ export default function CloudCounter() {
   };
 
   const incrementStoredValue = () => {
-    writeItemToStorage(value+1)
+    writeItemToCloud(value+1)
     }
 
   const initStoredValue = () => {
-    writeItemToStorage(0)
+    writeItemToCloud(0)
   }
 
   const logIn = () => {
     setDeviceId(email)
-    //readItemFromStorage()
+    //readItemFromCloud()
     setLoggingIn(false)
   }
 
   useEffect(() => {
-    readItemFromStorage();
+    readItemFromCloud();
   }, [deviceId,loggingIn]);
 
   let view = ""
