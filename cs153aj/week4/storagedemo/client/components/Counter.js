@@ -5,7 +5,7 @@ import { useAsyncStorage } from '@react-native-community/async-storage';
 
 export default function Counter() {
   const [value, setValue] = useState(0);
-  const { getItem, setItem } = useAsyncStorage('@storage_key');
+  const { getItem, setItem } = useAsyncStorage('counter1');
 
   const readItemFromStorage = async () => {
     const item = await getItem();
