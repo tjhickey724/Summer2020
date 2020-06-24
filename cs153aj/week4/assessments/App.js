@@ -2,7 +2,8 @@ import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-
+import Demo1 from './components/Demo1'
+import Demo2 from './components/Demo2'
 
 
 const Stack = createStackNavigator()
@@ -77,39 +78,9 @@ function Profile({ navigation, route }) {
   );
 }
 
-function Demo2(){
-  return (
-    <View>
-        <Listing2 name="Tim Hickey" email="tjhickey@brandeis.edu" phone="62706"/>
-        <Listing2 name="Pito Salas" email="pitosalas@brandeis.edu" phone="68733"/>
-    </View>
-  );
-}
 
-const Listing2 = ({name,email,phone}) => {
-  return (
-    <View style={{margin:10}} >
-       <Text> name: {name} </Text>
-       <Text> email:{email} </Text>
-       <Text> phone:{phone} </Text>
-    </View>
-  );
-}
 
-function Demo1(){
-  return (
-    <View>
-        <Listing name="Tim Hickey" email="tjhickey@brandeis.edu" />
-        <Listing name="Pito Salas" email="pitosalas@brandeis.edu" />
-    </View>
-  );
-}
 
-function Listing({name,email}) {
-  return (
-        <Text> name: {name}  email: {email} </Text>
-  );
-}
 
 const styles = StyleSheet.create({
 
