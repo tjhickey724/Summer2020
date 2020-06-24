@@ -2,7 +2,7 @@ import React,{useState,useEffect} from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 var uuid = require('react-native-uuid');
 
-const deviceId = "1234";
+const deviceId = "tjhickey@brandeis.edu";
 
 export default function CloudCounter0() {
   const [value, setValue] = useState(0);
@@ -10,7 +10,7 @@ export default function CloudCounter0() {
   const readItemFromStorage = async () => {
     //const item = await getItem();
 
-    const item = await fetch("http://localhost:3000/get",{
+    const item = await fetch("http://gracehopper.cs-i.brandeis.edu:3500/get",{
       method:"POST",
       headers: {
         Accept: 'application/json',
@@ -30,7 +30,7 @@ export default function CloudCounter0() {
   const writeItemToStorage = async newValue => {
     //await setItem(JSON.stringify(newValue));
 
-    await fetch("http://localhost:3000/store",{
+    await fetch("http://gracehopper.cs-i.brandeis.edu:3500/store",{
       method:"POST",
       headers: {
         Accept: 'application/json',

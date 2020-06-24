@@ -22,6 +22,9 @@ export default function App() {
         <Stack.Screen
           name="Demo1"
           component={Demo1} />
+        <Stack.Screen
+          name="Demo2"
+          component={Demo2} />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -49,6 +52,12 @@ function HomeScreen({ navigation, title }) {
             navigation.navigate('Demo1')
           }
         />
+        <Button
+          title="Go to Demo2"
+          onPress={() =>
+            navigation.navigate('Demo2')
+          }
+        />
     </View>
   );
 }
@@ -68,6 +77,25 @@ function Profile({ navigation, route }) {
   );
 }
 
+function Demo2(){
+  return (
+    <View>
+        <Listing2 name="Tim Hickey" email="tjhickey@brandeis.edu" phone="62706"/>
+        <Listing2 name="Pito Salas" email="pitosalas@brandeis.edu" phone="68733"/>
+    </View>
+  );
+}
+
+const Listing2 = ({name,email,phone}) => {
+  return (
+    <View style={{margin:10}} >
+       <Text> name: {name} </Text>
+       <Text> email:{email} </Text>
+       <Text> phone:{phone} </Text>
+    </View>
+  );
+}
+
 function Demo1(){
   return (
     <View>
@@ -79,9 +107,7 @@ function Demo1(){
 
 function Listing({name,email}) {
   return (
-
         <Text> name: {name}  email: {email} </Text>
-
   );
 }
 

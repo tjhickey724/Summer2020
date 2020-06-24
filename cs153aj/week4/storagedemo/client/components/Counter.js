@@ -4,12 +4,13 @@ import { useAsyncStorage } from '@react-native-community/async-storage';
 
 
 export default function Counter() {
+
   const [value, setValue] = useState(0);
-  const { getItem, setItem } = useAsyncStorage('counter1');
+  const { getItem, setItem } = useAsyncStorage('Counter');
 
   const readItemFromStorage = async () => {
     const item = await getItem();
-    setValue(JSON.parse(item));
+    setValue(JSON.parse(item)||value); // if item=="null", then just use value
   };
 
   const writeItemToStorage = async newValue => {
