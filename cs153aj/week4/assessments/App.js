@@ -5,6 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Demo1 from './components/Demo1'
 import Demo2 from './components/Demo2'
 import Demo3 from './components/Demo3'
+import Demo3a from './components/Demo3a'
 import Demo4 from './components/Demo4'
 
 
@@ -31,6 +32,9 @@ export default function App() {
         <Stack.Screen
           name="Demo3"
           component={Demo3} />
+        <Stack.Screen
+          name="Demo3a"
+          component={Demo3a} />
         <Stack.Screen
           name="Demo4"
           component={Demo4} />
@@ -71,6 +75,12 @@ function HomeScreen({ navigation, title }) {
           title="Go to Demo3"
           onPress={() =>
             navigation.navigate('Demo3')
+          }
+        />
+        <Button
+          title="Go to Demo3a"
+          onPress={() =>
+            navigation.navigate('Demo3a')
           }
         />
         <Button

@@ -1,25 +1,37 @@
 import React,{useState} from 'react';
 import { StyleSheet, SafeAreaView, FlatList, Text, TextInput, View, Button } from 'react-native';
 
-// this shows how to use a form
+// this shows how to use a form and a FlatList
 export default function Demo4(){
-  const [name,setName] = useState("")
-  const [age,setAge] = useState(0)
+
+  // state variable holding list of people
   const [people, setPeople] = useState([])
-  const addPerson = () => {
-    const person = {name:name,age:age}
+
+  // function to add person to list of people
+  const addPerson = (person) => {
     setPeople(people.concat(person))
   }
-  
+
   return (
     <View style={{margin:20, width:300}}>
-      <PersonForm setName={setName} setAge={setAge} addPerson={addPerson} />
+      <PersonForm addPerson={addPerson} />
       <People people={people} />
     </View>
   );
 }
 
-function PersonForm({setName,setAge,addPerson}) {
+
+
+function PersonForm({addPerson}) {
+  // state variables corresponding to form fields
+  const [name,setName] = useState("")
+  const [age,setAge] = useState(0)
+
+  const handleForm = () => {
+    const person = {name:name,age:age}
+    addPerson(person)
+  }
+
   return (
     <View style={{backgroundColor:"#aaa"}}>
       <View style={{flexDirection:"row"}}>
@@ -30,20 +42,20 @@ function PersonForm({setName,setAge,addPerson}) {
         <Text style={{margin:5}}>age:</Text>
         <TextInput onChangeText={text => setAge(text)} />
       </View>
-      <Button title="add Person" onPress={addPerson} />
+      <Button title="add Person" onPress={handleForm} />
     </View>
   )
 }
 
+
+
 function People({people}) {
   return (
-    <SafeAreaView style={{flex:1,backgroundColor:"#fca"}}>
-          <FlatList
-            data={people}
-            renderItem={({ item }) => <Person name={item.name} age={item.age} />}
-            keyExtractor={(item,index) => "person"+index}
-          />
-    </SafeAreaView>
+      <FlatList style={{backgroundColor:"#fca"}}
+        data={people}
+        renderItem={({ item }) => <Person name={item.name} age={item.age} />}
+        keyExtractor={(item,index) => "person"+index}
+      />
   )
 
 }
