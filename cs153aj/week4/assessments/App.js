@@ -4,6 +4,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Demo1 from './components/Demo1'
 import Demo2 from './components/Demo2'
+import Demo3 from './components/Demo3'
+import Demo4 from './components/Demo4'
 
 
 const Stack = createStackNavigator()
@@ -26,6 +28,12 @@ export default function App() {
         <Stack.Screen
           name="Demo2"
           component={Demo2} />
+        <Stack.Screen
+          name="Demo3"
+          component={Demo3} />
+        <Stack.Screen
+          name="Demo4"
+          component={Demo4} />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -57,6 +65,18 @@ function HomeScreen({ navigation, title }) {
           title="Go to Demo2"
           onPress={() =>
             navigation.navigate('Demo2')
+          }
+        />
+        <Button
+          title="Go to Demo3"
+          onPress={() =>
+            navigation.navigate('Demo3')
+          }
+        />
+        <Button
+          title="Go to Demo4"
+          onPress={() =>
+            navigation.navigate('Demo4')
           }
         />
     </View>
