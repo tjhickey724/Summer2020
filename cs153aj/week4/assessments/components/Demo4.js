@@ -51,20 +51,19 @@ function PersonForm({addPerson}) {
 
 function People({people}) {
   return (
-      <FlatList style={{backgroundColor:"#fca"}}
+      <FlatList style={{backgroundColor:"#aaf"}}
         data={people}
-        renderItem={({ item }) => <Person name={item.name} age={item.age} />}
+        renderItem={({ item }) => <Person item={item} />}
         keyExtractor={(item,index) => "person"+index}
       />
   )
-
 }
 
-function Person({name,age}) {
+function Person({item}) {
   return (
     <View style={{flexDirection:"row",margin:10}}>
-      <Text> {name} </Text>
-      <Text> {age} </Text>
+      <Text> {item.name} </Text>
+      <Text> {item.age} </Text>
     </View>
   )
 }

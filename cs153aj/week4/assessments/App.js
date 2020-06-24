@@ -7,6 +7,7 @@ import Demo2 from './components/Demo2'
 import Demo3 from './components/Demo3'
 import Demo3a from './components/Demo3a'
 import Demo4 from './components/Demo4'
+import Square from './components/Square'
 
 
 const Stack = createStackNavigator()
@@ -38,6 +39,9 @@ export default function App() {
         <Stack.Screen
           name="Demo4"
           component={Demo4} />
+        <Stack.Screen
+          name="Square"
+          component={Square} />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -87,6 +91,12 @@ function HomeScreen({ navigation, title }) {
           title="Go to Demo4"
           onPress={() =>
             navigation.navigate('Demo4')
+          }
+        />
+        <Button
+          title="Go to Square"
+          onPress={() =>
+            navigation.navigate('Square')
           }
         />
     </View>
