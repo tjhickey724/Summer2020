@@ -1,5 +1,7 @@
-import React,{useState} from 'react';
-import { StyleSheet, Text, TextInput, View, Button } from 'react-native';
+import React,{useState}
+    from 'react';
+import { StyleSheet, Text, TextInput, View, Button }
+    from 'react-native';
 
 // this shows how to use a form
 export default function Demo3a(){
@@ -9,8 +11,11 @@ export default function Demo3a(){
     <View>
       <View style={{flexDirection:"row"}}>
         <Text>name:</Text>
-        <TextInput onChangeText={text => setName(text)} />
-        <Button title="greet user" onPress={()=>setGreeting(`Hello ${name}`)} />
+        <TextInput
+            onChangeText={text => setName(text)} />
+        <Button
+            title="greet user"
+            onPress={()=>setGreeting(`Hello ${name}`)} />
         <Text>{greeting} </Text>
       </View>
     </View>
