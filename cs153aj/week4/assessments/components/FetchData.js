@@ -7,9 +7,7 @@ const FetchData = ({url}) => {
 
     const getData = async () => {
       const result = await fetch(url)
-      console.log(result)
       const data = await result.json()
-      console.log(data)
       setData(data)
       setLoading(false)
     }

@@ -49,6 +49,39 @@ app.get("/", (req, res) => {
   res.render("index");
 })
 
+app.get("/abc", (req,res,next) => {
+  res.locals.val=
+    {name:"Tim",
+     list:[2,3,5,7,11,13]}
+  res.render("abc")
+})
+
+app.get("/abcd", (req,res,next) => {
+  res.json(req.query)
+})
+
+app.get("/delete/:id", (req,res,next) => {
+  res.json(req.params)
+})
+
+app.get("/abc/:lang/:content/:base", (req,res,next) => {
+  res.json(req.params)
+})
+
+app.post("/abc", (req,res,next) => {
+  res.json(req.body)
+})
+
+app.get("/hello/:name", (req,res,next) => {
+  res.locals.name = req.params.name
+  res.render("helloform")
+})
+
+app.get("/hello2/:user", (req,res,next) => {
+  let u = req.params.user
+  res.render("helloform",{name:u})
+})
+
 app.get("/bio", (req, res) => {
   res.send(`Enter your data below:<br>
   <form method="post" action="/bio">

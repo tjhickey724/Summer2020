@@ -9,6 +9,7 @@ import Demo3a from './components/Demo3a'
 import Demo4 from './components/Demo4'
 import Square from './components/Square'
 import CovidAPI from './components/CovidAPI'
+import ShoppingTesting from './components/ShoppingTesting'
 
 const demos =
  [
@@ -20,6 +21,7 @@ const demos =
    {name:'Demo4',component:Demo4},
    {name:'Square',component:Square},
    {name:'CovidAPI',component:Demo3},
+   {name:'ShoppingTesting', component:ShoppingTesting},
  ]
 
 const Stack = createStackNavigator()
@@ -54,6 +56,9 @@ export default function App() {
       <Stack.Screen
           name="CovidAPI"
           component={CovidAPI} />
+      <Stack.Screen
+          name="ShoppingTesting"
+          component={ShoppingTesting} />
       </Stack.Navigator>
     </NavigationContainer>
   );

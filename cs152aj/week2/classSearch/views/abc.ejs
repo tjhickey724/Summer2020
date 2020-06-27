@@ -1,0 +1,15 @@
+<div>
+  name: <%= val.name %>
+  <hr>
+  <% val.list.forEach(x => { %>
+    x=<%= x %> <hr>
+  <% }) %>
+</div>
+
+<form method="POST" action="/abc">
+  <input type="date" name="when"> <br>
+  <input type="color" name="favorite"><br>
+  <input type="password" name="dangerous"><br>
+  <textarea name="bio"></textarea><br>
+  <input type="submit">
+</form>
